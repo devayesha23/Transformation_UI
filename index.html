@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Transformation UI</title>
+  <link rel="stylesheet" href="https://static.filestackapi.com/transforms-ui/2.x.x/transforms.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://media.istockphoto.com/id/1291422886/video/clean-soft-and-shiny-background-animation-abstract-simple-beautiful-blurred-motion-design-the.jpg?s=640x640&k=20&c=2fUgmZf_HXBrKE6ZIt-0oh69yGLy4J5aJuAORUURv9M=');
+      background-size: cover;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #EF4A25; /* Filestack blue */
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: white;
+    }
+    #fileInput {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #007bff; /* Filestack blue */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #resultContainer {
+      text-align: center;
+      margin-top: 20px;
+    }
+    #result {
+      max-width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Image Transformation UI</h1>
+    <input type="file" id="fileInput"/>
+    <div id="resultContainer">
+      <img id="result" />
+    </div>
+  </div>
+ 
+  <script src="https://static.filestackapi.com/transforms-ui/2.x.x/transforms.umd.min.js"></script>
+  <script>
+    const tr = new FilestackTransform('A18L3T2eWRemxYIGwGlZsz');
+    document.getElementById('fileInput').addEventListener('change', (e) => {
+      tr.open(e.target.files[0]).then(res => {
+        document.getElementById('result').src = res;
+      });
+    });
+  </script>
+</body>
+</html>
